@@ -1,0 +1,17 @@
+{
+  "name": "mapd713-A1-varunbhatt(product-api)",
+  "version": "1.0.0",
+  "description": "REST API - products",
+  "main": "index.js",
+  "engines": {
+    "node": ">=4.1.1",
+    "npm": ">=2.1.x"
+  },
+  "authors": [
+    "Varun Bhatt"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "restify": "^11.1.0"
+  }
+}
