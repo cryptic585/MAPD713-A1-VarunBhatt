@@ -5,6 +5,7 @@ let HOST = '127.0.0.1';
 let errors = require('restify-errors');
 let restify = require('restify')
 let totalCount = 0
+let totalCount2 = 0
 
   // Get a persistence engine for the products
 
@@ -90,21 +91,25 @@ server.put('/products/:id', function (req, res, next) {
 
 // Get all products from the system
 server.get('/products', function (req, res, next) {
-  console.log('GET /products');
+  console.log('products GET: received request');
   totalCount++;
-  console.log('totalCount:'+totalCount)
+  console.log('Processed Request Count:'+totalCount)
   // Find every entity within the given collection
   productSave.find({}, function (error, products) {
 
     // Return all of the users in the system
     res.send(products)
+    console.log("products GET: sending response");
   })
 })
 
 // Create a new product
 server.post('/products', function (req, res, next) {
+    totalCount2++;
   console.log('POST /users params=>' + JSON.stringify(req.params));
   console.log('POST /users body=>' + JSON.stringify(req.body));
+  console.log('products POST: received request');
+  console.log('Processed Request Count:'+totalCount2)
 
   // validation of manadatory fields
   if (req.body.productId === undefined ) {
@@ -136,7 +141,7 @@ server.post('/products', function (req, res, next) {
 
     // If there are any errors, pass them to next in the correct format
     if (error) return next(new Error(JSON.stringify(error.errors)))
-
+    console.log("products POST: sending response");
     // Send the user if no issues
     res.send(201, product)
   })
