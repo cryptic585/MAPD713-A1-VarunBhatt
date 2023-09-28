@@ -165,16 +165,32 @@ server.del('/products/:id', function (req, res, next) {
 
 
 
+
 // Delete all products in the persistence engine
 server.del('/products', function (req, res, next) {
-  console.log('POST /users params=>' + JSON.stringify(req.params));
+    console.log('POST /users params=>' + JSON.stringify(req.params));
+    // Delete the all products with the persistence engine
+  
+    productSave.deleteMany({}, function (error, products) {
+
+        // Return all of the users in the system
+        res.send(201,"All records deleted")
+        console.log("Records deleted");
+      })
+  
+  })
+  
+
+// Delete all products in the persistence engine
+/*server.del('/products', function (req, res, next) {
+  console.log('POST /users params=>' + JSON.stringify(req.params));*/
   // Delete the all products with the persistence engine
 
-  productSave.deleteMany({});
+  /*productSave.deleteMany({});*/
   //const result = productSave.deleteMany({name:"Candle"});
-  res.send(201, "All records deleted") 
+  /*res.send(201, "All records deleted") 
 
-})
+})*/
 
 /*server.del('/products/:name', function (req, res, next) {
   console.log('POST /products params=>' + JSON.stringify(req.params));
