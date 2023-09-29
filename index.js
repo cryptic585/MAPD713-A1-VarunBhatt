@@ -1,5 +1,5 @@
 let SERVER_NAME = 'product-api'
-let PORT =4000;
+let PORT =5000;
 let HOST = '127.0.0.1';
 
 let errors = require('restify-errors');
@@ -51,8 +51,8 @@ server.get('/products/:id', function (req, res, next) {
 
 // Update a product by their id
 server.put('/products/:id', function (req, res, next) {
-  console.log('POST /products params=>' + JSON.stringify(req.params));
-  console.log('POST /products body=>' + JSON.stringify(req.body));
+  console.log('PUT /products params=>' + JSON.stringify(req.params));
+  console.log('PUT /products body=>' + JSON.stringify(req.body));
   // validation of manadatory fields
   if (req.body.productId === undefined ) {
     // If there are any errors, pass them to next in the correct format
